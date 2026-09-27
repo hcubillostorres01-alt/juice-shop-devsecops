@@ -28,7 +28,7 @@ jobs:
         run: cd frontend && npx ng build --configuration production && cd .. && npm run build:server
 
       - name: Run tests
-        run: npm test
+        run: npm run test:server
 
   sast:
     needs: build-test
