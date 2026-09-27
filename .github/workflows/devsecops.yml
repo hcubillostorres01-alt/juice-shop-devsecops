@@ -44,24 +44,23 @@ jobs:
           config: p/javascript
 
   sca:
-    needs: build-test
-    runs-on: ubuntu-latest
-
-    steps:
+  needs: build-test
+  runs-on: ubuntu-latest
+  steps:
       - name: Checkout
         uses: actions/checkout@v6
 
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: '24'
+        node-version: '24'
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --ignore-scripts
 
       - name: Dependency audit
-        run: npm audit --audit-level=high
-
+      run: npm audit --audit-level=high
+   
   secrets:
     needs: build-test
     runs-on: ubuntu-latest
