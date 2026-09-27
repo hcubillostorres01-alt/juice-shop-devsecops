@@ -25,10 +25,7 @@ jobs:
         run: cd frontend && npm install --ignore-scripts
 
       - name: Build application
-        run: npm run build
-
-      - name: Build application
-        run: npm run build
+        run: npm run build:frontend && npm run build:server
 
       - name: Run tests
         run: npm test
