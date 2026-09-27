@@ -5,12 +5,14 @@ WORKDIR /juice-shop
 
 RUN npm install -g typescript@^6.0.3
 
-RUN npm install --omit=dev --ignore-scripts
-RUN npm dedupe --omit=dev
+RUN npm install --ignore-scripts
 
 RUN cd frontend && npm install --ignore-scripts
 RUN cd frontend && npx ng build --configuration production
 RUN npm run build:server
+
+RUN npm prune --omit=dev
+RUN npm dedupe --omit=dev
 
 RUN rm -rf frontend/node_modules
 RUN rm -rf frontend/.angular
