@@ -7,8 +7,12 @@ RUN npm install -g typescript@^6.0.3
 
 RUN npm install --ignore-scripts
 
-RUN cd frontend && npm install --ignore-scripts
-RUN cd frontend && npx ng build --configuration production
+WORKDIR /juice-shop/frontend
+
+RUN npm install --ignore-scripts
+RUN npx ng build --configuration production
+
+WORKDIR /juice-shop
 RUN npm run build:server
 
 RUN npm prune --omit=dev
