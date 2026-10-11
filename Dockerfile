@@ -15,8 +15,7 @@ RUN npx ng build --configuration production
 WORKDIR /juice-shop
 RUN npm run build:server
 
-RUN npm prune --omit=dev
-RUN npm dedupe --omit=dev
+RUN npm prune --omit=dev && npm dedupe --omit=dev
 
 RUN rm -rf frontend/node_modules
 RUN rm -rf frontend/.angular
